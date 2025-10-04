@@ -1,0 +1,13 @@
+.home {
+
+  background: url('./Group_15.png');
+  height: 100%;
+  width: 100%;
+}
+.content{
+  text-align: center;
+  margin-top: 10%;
+  font-weight: 700;
+
+}
+
