@@ -5,7 +5,7 @@
     font-family: 'Poppins',sans-serif;
 }
 .navbar{
-    background: #555; /* dark grey */
+  background: #555;
   padding: 10px 30px;
   display: flex;
   align-items: center;
@@ -15,6 +15,24 @@
 
   
   
+}
+@media (max-width:500px ) {
+   .navbar{
+  background: #555;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+   }
+
+
+    
 }
 
 .navbar ul {
