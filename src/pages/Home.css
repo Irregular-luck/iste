@@ -1,6 +1,7 @@
-.home {
 
-  background: url('./Group_15.png');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+.home{
+  
   height: 100%;
   width: 100%;
 }
@@ -8,6 +9,57 @@
   text-align: center;
   margin-top: 10%;
   font-weight: 700;
-
+}
+.wall{
+  background: url('./Group_15.png');
+  padding-top: 5%;
+  padding-bottom: 5%;
+  
+}
+.welcome-section {
+  width: 100%;
+  margin: 4rem auto;
 }
 
+.line {
+  height: 5px;
+  background-color: #3b4f8c;
+}
+
+.line-top {
+  width: 100%;
+  margin-left: auto;
+  max-width: 65%; /* 2. Changed back to 65% to match the design */
+}
+
+.welcome-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: 3px;
+  margin: 1.5rem 0;
+  font-size: clamp(8rem, 18vw, 25rem) !important;
+ 
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.line-bottom {
+  width: 100%;
+  max-width: 65%;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: clamp(1rem, 4vw, 1.75rem);
+  color: #3b4f8c;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  padding-right:5%;
+}
