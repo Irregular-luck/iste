@@ -2,7 +2,7 @@
 
 ## Clone the Repository
 ```bash
-git clone <repository-url>
+git clone [<repository-url>](https://github.com/Irregular-luck/iste.git)
 cd <project-directory>
 ```
 
