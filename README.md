@@ -2,8 +2,8 @@
 
 ## Clone the Repository
 ```bash
-git clone [<repository-url>](https://github.com/Irregular-luck/iste.git)
-cd <project-directory>
+git clone https://github.com/Irregular-luck/iste.git
+cd iste
 ```
 
 ## Install Dependencies
