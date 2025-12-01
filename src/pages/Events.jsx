@@ -1,4 +1,5 @@
 import React from 'react'
+import eventsData from '../data/eventsData'
 import './Events.css'
 
 const EventsDecorativeLines = () => {
@@ -19,11 +20,27 @@ const EventsTitle = () => {
   )
 }
 
+const EventsContent = ({ eventIndex = 0 }) => {
+  const event = eventsData[eventIndex]
+  return (
+    <div className="events-content-container">
+      <div className="events-content-left">
+        <p className="events-description">{event.description}</p>
+        <div className="events-content-line"></div>
+      </div>
+      <div className="events-content-right">
+        <span className="events-rotated-text">IGNIFEX</span>
+      </div>
+    </div>
+  )
+}
+
 const Events = () => {
   return (
     <div>
       <EventsDecorativeLines />
       <EventsTitle />
+      <EventsContent />
     </div>
   )
 }
