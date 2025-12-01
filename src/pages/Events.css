@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+@font-face {
+  font-family: 'Impact';
+  src: url('/impact.ttf') format('truetype');
+}
+
+.decorative-lines-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding: 8rem 0 2rem 0;
+  background-color: #FAF9F6;
+}
+
+.decorative-line {
+  height: 4px;
+  background-color: #8C8C8C;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.events-title-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #FAF9F6;
+}
+
+.events-title {
+  font-family: 'Impact', sans-serif;
+  font-size: 120px;
+  font-weight: 700;
+  color: #003da5;
+  margin: 0;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  line-height: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.events-title-line {
+  height: 7px;
+  background-color: #003da5;
+  flex: 1;
+  min-width: 100px;
+  align-self: flex-end;
+  margin-bottom: 2px;
+}
+ 
+
