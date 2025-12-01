@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+@font-face {
+  font-family: "Aquarium";
+  src: url("/AQUARIUM.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  text-align: center;
+  margin-top: 10%;
+  font-weight: 700;
+}
+
+.wall {
+  background: url('./Group_15.png');
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.welcome-section {
+  width: 100%;
+  margin: 3rem auto;
+  padding: 0 1rem; /* small side padding for narrow screens */
+}
+
+.line {
+  height: 5px;
+  background-color: #3b4f8c;
+}
+
+.line-top {
+  width: 100%;
+  margin-left: auto;
+  max-width: 65%; /* 2. Changed back to 65% to match the design */
+}
+
+h1.welcome-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: 3px;
+  margin: 1rem 0;
+  font-size: clamp(6rem, 16vw, 18rem);
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+  flex-wrap: wrap; /* allow wrapping if space is tight */
+}
+
+.line-bottom {
+  width: 100%;
+  max-width: 65%;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: clamp(1rem, 4vw, 1.75rem);
+  color: #3b4f8c;
+  letter-spacing: 1px;
+  white-space: normal; /* allow wrapping on small screens */
+  padding-right: 0.5rem;
+}
+
+.about-section-container {
+  display: grid;
+  grid-template-columns: minmax(80px, 180px) 1fr;
+  gap: 40px;
+  padding: 60px 40px;
+  align-items: start;
+}
+
+.about-title {
+  align-self: start;
+  font-family: "Aquarium";
+  font-size: clamp(5rem, 12vw, 12rem);
+  font-weight: 900;
+  color: #1E3A8A;
+  -webkit-text-stroke: 1px #1f398e;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0;
+  line-height: 0.98;
+  white-space: nowrap;
+}
+
+.about-content {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  color: #333;
+  align-self: start;
+  margin-left: 100px;
+  max-width: 1000px;
+}
+
+.about-content::before {
+  content: '';
+  display: block;
+  width: 60%;
+  max-width: 480px;
+  height: 6px;
+  background: #1E3A8A;
+  margin-bottom: 22px;
+}
+
+/* Responsive tweaks for welcome section */
+@media (max-width: 900px) {
+  .line-top,
+  .line-bottom {
+    max-width: 55%;
+  }
+  h1.welcome-text {
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .welcome-section {
+    margin: 2rem auto;
+  }
+  /* stack the bottom container so the line sits above the subtitle */
+  .bottom-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .line-top,
+  .line-bottom {
+    width: 60%;
+    max-width: 320px;
+    height: 4px;
+  }
+  .subtitle {
+    text-align: center;
+    padding-right: 0;
+  }
+}
+
+/* Responsive tweaks for about section */
+@media (max-width: 1400px) {
+  .about-section-container {
+    grid-template-columns: minmax(70px, 150px) 1fr;
+    padding: 50px 36px;
+  }
+  .about-title {
+    font-size: clamp(4.2rem, 10vw, 10rem);
+  }
+}
+
+@media (max-width: 1000px) {
+  .about-section-container {
+    grid-template-columns: minmax(64px, 120px) 1fr;
+    gap: 28px;
+    padding: 36px 28px;
+  }
+  .about-title {
+    font-size: clamp(3rem, 8.5vw, 7.2rem);
+  }
+  .about-content::before {
+    width: 48%;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-section-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px;
+  }
+  .about-title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    text-align: center;
+    font-size: clamp(1.4rem, 4.5vw, 2.2rem);
+    line-height: 1.1;
+    margin: 0 auto;
+  }
+  .about-content {
+    margin-left: 0;
+  }
+  .about-content::before {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
