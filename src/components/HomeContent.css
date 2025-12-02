@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Aquarium";
-  src: url("/AQUARIUM.ttf") format("truetype");
+  src: url("/AQUARIUM.otf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -85,16 +85,50 @@ h1.welcome-text {
 .about-title {
   align-self: start;
   font-family: "Aquarium";
-  font-size: clamp(5rem, 12vw, 12rem);
-  font-weight: 900;
+  font-size: clamp(8rem, 15vw, 17rem);
+  font-weight: 500;
   color: #1E3A8A;
-  -webkit-text-stroke: 1px #1f398e;
+  -webkit-text-stroke: 2px #1f398e;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   letter-spacing: 0;
   line-height: 0.98;
   white-space: nowrap;
 }
+
+
+/* anchor for A */
+.a-letter {
+  display: inline-block;
+  position: relative;
+  font-family: inherit;
+}
+
+/* -- TUNE THESE: -- */
+.a-letter::after {
+  --thickness: 38%;   /* stroke thickness of the extension */
+  --length: 500%;     /* how long the extension will be */
+  --offset-x: 91%;     /* horizontal offset from the A glyph (positive = right) */
+  --offset-y: 26%;      /* vertical offset relative to the A glyph center */
+
+  content: "";
+  position: absolute;
+
+  /* We'll create a horizontal bar then rotate it so it appears as a vertical leg */
+  width: var(--length);
+  height: var(--thickness);
+  background: #1E3A8A;
+  
+  z-index: 2;
+  pointer-events: none;
+
+  /* Position near the middle of the A glyph, then rotate -90deg to make it vertical */
+  left: calc(100% - var(--offset-x));  /* 100% places it at the right edge of the A span */
+  top: var(--offset-y);                /* tune up/down, can be percentage like 50% */
+  transform-origin: left center;
+  transform: translateY(-50%) rotate(-180deg);
+}
+
 
 .about-content {
   font-size: clamp(1rem, 1.6vw, 1.25rem);
