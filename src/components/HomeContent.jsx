@@ -43,6 +43,49 @@ const HomeContent = () => {
           </p>
         </div>
       </div>
+      <div className='regButtons'>
+        <button className='pill-btn'>Membership</button>
+        <button className='pill-btn'>Aakrithi Registration</button>
+
+      </div>
+
+      <div class="events-heading">
+            <h2>EVENTS</h2>
+       
+       </div>
+       <br />
+       <br />
+       <br />
+
+       <div class="linee"></div>
+       <br />
+       <br />
+       <br />
+       <div class="linee"></div>
+       <br />
+       <div className='event-images'>
+        <img src="./ignifex.png" alt="ignifex" />
+        <img src="./logo.png" alt="iste-logo" />
+        <img src="aakrithi.png" alt="aakrithi" />
+        <img src="./insignis.png" alt="insignis" />
+
+       </div>
+
+       <div className='home-end'>
+        <a className='explore' href='www.google.com'><u>EXPLORE MORE&gt;&gt;</u></a>
+        <div className='linee2'></div>
+        <br />
+        <div className='pics'>
+        <img src="./pic1.png" alt="" />
+        <img src="./pic2.png" alt="" />
+        <div className='glimpse-side'>
+             <span className="glimpse-text">GLIMPSE</span>
+        </div>
+        </div>
+        <a className='explore' href='www.google.com'>VIEW MORE&gt;&gt;</a>
+       </div>
+       
+
     </div>
   )
 }
