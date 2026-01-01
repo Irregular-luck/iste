@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+@font-face {
+    font-family: 'Impact';
+    src: url('/impact.ttf') format('truetype');
+}
+
+body {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.team {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.team .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+
+.team .title .team-title {
+    font-family: 'Impact', sans-serif !important;
+    width: 45vw !important;
+    display: flex !important;
+    justify-content: right !important;
+    align-items: end !important;
+    color: #151617 !important;
+    font-size: 7.5vw !important;
+    font-weight: 300 !important;
+}
+
+.team .title .bar-con {
+    display: flex;
+    align-items: end;
+}
+
+.team .title .title-bar {
+    width: 45vw;
+    height: 13px;
+    height: 1vw !important;
+    background: linear-gradient(to right, #151617, #698CF5);
+    margin-bottom: 1.6vw;
+    margin-left: 13px;
+}
+
+.team .image-frame{
+    width: 100%;
+    height: 100%;
+    margin: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.team .image-frame img{
+    height: 35vw;
+    transition: transform .4s ease-in;
+    box-shadow: 0px 3px 6px #151617;
+}
+.team .image-frame img:hover{
+    transform: translateY(-5px);
+}

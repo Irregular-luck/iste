@@ -1,11 +1,10 @@
 import React from 'react'
+import TeamContent from '../components/TeamContent'
 
 const Team = () => {
-  return (
-    <div>
-        <h1>Team</h1>
-        </div>
-  )
+  return <>
+    <TeamContent />
+  </>
 }
 
 export default Team
