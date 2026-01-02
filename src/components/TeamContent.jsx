@@ -11,10 +11,16 @@ const TeamContent = () => {
                     <div className='title-bar'></div>
                 </div>
             </div>
-            <div className='image-frame'>
-                <img src="frame1.png" alt="team" />
-                <img src="frame2.png" alt="team" />
-                <img src="frame3.png" alt="team" />
+            <div className='image-frames'>
+                <div className='frame'>
+                    <img src="frame1.png" alt="team" className='image-ani' />
+                </div>
+                <div className='frame'>
+                    <img src="frame2.png" alt="team" className='image-ani' />
+                </div>
+                <div className='frame'>
+                    <img src="frame3.png" alt="team" className='image-ani' />
+                </div>
             </div>
         </div>
     )
