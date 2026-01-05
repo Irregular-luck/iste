@@ -109,7 +109,8 @@ h1.welcome-text {
 /* -- TUNE THESE: -- */
 .a-letter::after {
   --thickness: 38%;   /* stroke thickness of the extension */
-  --length: 500%;     /* how long the extension will be */
+ --length: clamp(200%, 50vw, 500%);
+     /* how long the extension will be */
   --offset-x: 91%;     /* horizontal offset from the A glyph (positive = right) */
   --offset-y: 26%;      /* vertical offset relative to the A glyph center */
 
@@ -270,7 +271,13 @@ margin-bottom: 10%;
 
 
 
-
+@media (min-width:700px){
+  .a-letter2{
+    display: none;
+  }
+ 
+ 
+}
 /* Responsive tweaks for welcome section */
 @media (max-width: 1024px) {
   .about-section-container {
@@ -280,6 +287,8 @@ margin-bottom: 10%;
   .about-content {
     margin-left: 80px;
   }
+    
+  
   .pics{
   display: flex;
   gap: 10px;
@@ -297,7 +306,7 @@ display: none;
 }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .line-top,
   .line-bottom {
     max-width: 55%;
@@ -308,6 +317,10 @@ display: none;
   .pill-btn {
     padding: 0.7rem 1.2rem;
     font-size: clamp(0.85rem, 2.2vw, 1.5rem);
+  }
+  .about-title{
+    font-size: clamp(15rem, 8vw, 16rem);
+    margin-top: 18%;
   }
 }
 
@@ -331,8 +344,9 @@ display: none;
     gap: 24px;
     padding: 40px 20px;
   }
-  .about-title {
-    font-size: clamp(3rem, 8vw, 7rem);
+   .about-title{
+    font-size: clamp(12rem, 8vw, 16rem);
+    margin-left: -10%;
   }
   .about-content {
     margin-left: 50px;
@@ -344,6 +358,7 @@ display: none;
   }
 
 }
+
 
 @media (max-width: 600px) {
   .welcome-section {
@@ -405,7 +420,7 @@ display: none;
   
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .content {
     margin-top: 20%;
   }
@@ -442,8 +457,15 @@ display: none;
     padding: 16px 12px;
   }
   .about-title {
-    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+    font-size: clamp(4rem, 3.5vw, 1.6rem);
     margin-bottom: 0.5rem;
+    
+  }
+  .a-letter{
+    display: none;
+  }
+  .a-letter2{
+    font-family: inherit;
   }
   .about-content {
     font-size: clamp(0.85rem, 1.3vw, 0.95rem);

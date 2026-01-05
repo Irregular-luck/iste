@@ -23,7 +23,7 @@ const HomeContent = () => {
       </div>
 
       <div className="about-section-container">
-        <div className="about-title"><span className='a-letter'>A</span>BOUT US</div>
+        <div className="about-title"><span className='a-letter'>A</span><span className='a-letter2'>A</span>BOUT US</div>
 
         <div className="about-content">
           <p>The ISTE Student Chapter at Government Engineering College, Kozhikode (GECK), 
