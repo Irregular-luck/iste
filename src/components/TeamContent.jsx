@@ -1,49 +1,81 @@
-import React from 'react'
-import './TeamContent.css'
+import { useState } from "react";
+import "./TeamContent.css";
+
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const TeamContent = () => {
-    const [open, setopen] = React.useState(false)
-    return (
-        <div className='team'>
-            <div className='title'>
-                <h1 className='team-title'>MEET THE TEAM</h1>
-                <div className='bar-con'>
-                    <div className='title-bar'></div>
-                </div>
-            </div>
-            <div className='image-frames'>
-                <div className='frame'>
-                    <button onClick={()=>setopen(true)}>
-                        <img src="frame1.png" alt="team" className='image-ani' />
-                    </button>
-                </div>
-                <div className='frame'>
-                     <button onClick={()=>setopen(true)}>
-                        <img src="frame2.png" alt="team" className='image-ani' />
-                      </button>  
-                
-                </div>
-                <div className='frame'>
-                     <button onClick={()=>setopen(true)}>
-                        <img src="frame3.png" alt="team" className='image-ani' />
-                        </button>
-                </div>
-            </div>
-            <Lightbox
-            open={open}
-            close={() => setopen(false)}
-            slides={[
-          { src: "frame1.png" },
-          { src: "frame2.png" },
-          { src: "frame3.png" },
-        ]}
-            />
+export default function TeamContent() {
+  const images = [
+    "/frame1.png",
+    "/frame2.png",
+    "/frame3.png",
+  ];
+
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  return (
+    <div className="team">
+      <div className="title">
+        <h1 className="team-title">MEET THE TEAM</h1>
+        <div className="bar-con">
+          <div className="title-bar"></div>
         </div>
-        
-    )
+      </div>
+
+      <div className="image-frames">
+        <div className="frame">
+          {images.map((src, i) => (
+            <ImageCard
+              key={i}
+              src={src}
+              onClick={() => {
+                setIndex(i);
+                setOpen(true);
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* ✅ ONE Lightbox only */}
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        index={index}
+        slides={images.map((img) => ({ src: img }))}
+      />
+    </div>
+  );
 }
 
-export default TeamContent
+/* ------------ Image Card ------------ */
+
+function ImageCard({ src, onClick }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div className="img-box" onClick={onClick}>
+      {!loaded && (
+        <Skeleton
+          height="100%"
+          width="100%"
+          borderRadius={15}
+          baseColor="#e5e7eb"
+          highlightColor="#f3f4f6"
+        />
+      )}
+
+      <img
+        src={src}
+        alt="team"
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        className={`team-img ${loaded ? "show" : "hide"}`}
+      />
+    </div>
+  );
+}

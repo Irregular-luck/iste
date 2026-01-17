@@ -58,10 +58,12 @@ body {
     margin: 65px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .team .image-frames .frame {
+  display: flex;
+  gap: 30px;
   transition: transform .4s ease-in;
 }
 
