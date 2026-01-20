@@ -240,11 +240,22 @@ h1.welcome-text {
   gap: 100px;
  
 }
+.slideshow {
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-row {
+  position: relative;
+  display: flex;   /* puts images side by side */
+  gap: 20px;
+}
 .pics img{
 object-fit: scale-down;
 margin-bottom: 10%;
 }
 .glimpse-side {
+
   padding: 20px 0;
   width: 120px;                /* adjust to match design */
   display: flex;
@@ -254,6 +265,7 @@ margin-bottom: 10%;
 
 /* vertical GLIMPSE text */
 .glimpse-text {
+  position: relative;
   font-family: 'Aquarium';
   writing-mode: vertical-lr;
   font-size: 2500%;             

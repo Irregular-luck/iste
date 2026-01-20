@@ -1,7 +1,24 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import './HomeContent.css'
-
+const images =["pic1.png","pic2.png","pic3.png","pic4.png"]
 const HomeContent = () => {
+  //sidebar working 
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 2) % images.length);
+    }, 3000); // change every 3 sec
+
+    return () => clearInterval(interval);
+  }, []);
+    const pair = [
+    images[index],
+    images[(index + 1) % images.length],
+  ];
+  //sidebar working end
+
   return (
     <div className="home">
       <div className='wall'>
@@ -76,8 +93,22 @@ const HomeContent = () => {
         <div className='linee2'></div>
         <br />
         <div className='pics'>
-        <img src="./pic1.png" alt="" />
-        <img src="./pic2.png" alt="" />
+ <div className="slideshow-box">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            className="slide-row"
+            initial={{ x: 120, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -120, opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {pair.map((img, i) => (
+              <img key={i} src={img} className="slide-img" />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
         <div className='glimpse-side'>
              <span className="glimpse-text">GLIMPSE</span>
         </div>
