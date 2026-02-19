@@ -1,6 +1,6 @@
 import React from 'react'
-import { footerContainer,istelogo,divider,emailLink,emailBlock,Social,Address,Icons } from './Footer.module.css'
-import { FaInstagramSquare,FaFacebookSquare, FaLinkedin } from 'react-icons/fa';
+import { footerContainer, istelogo, divider, emailLink, emailBlock, Social, Address, Icons, istefoot } from './Footer.module.css'
+import { FaInstagramSquare, FaFacebookSquare, FaLinkedin } from 'react-icons/fa';
 
 
 export default function Footer() {
@@ -28,12 +28,13 @@ export default function Footer() {
 
       <div className={emailBlock}>
         <a className={emailLink} href="mailto:istegeckozhikode@gmail.com">
-        istegeckozhikode@gmail.com
-      </a>
-    <div className={divider} ></div>
+          istegeckozhikode@gmail.com
+        </a>
+        <div className={divider} ></div>
       </div>
-      
-    <img src="/pngs/iste.png" alt="image" className={istelogo} />
+      <div className={istefoot}>
+        <img src="/pngs/iste.png" alt="image" className={istelogo} />
+      </div>
     </footer>
   )
 }

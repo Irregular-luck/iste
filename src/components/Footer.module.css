@@ -1,11 +1,9 @@
 .footerContainer {
-  background: linear-gradient(180deg, #4c66af, #1e3a8a);
-  width: 100%;
-  box-sizing: border-box; 
-  min-height: 80vh;
+  background: linear-gradient(180deg, #617bc5, #1e3a8a);
+  width: 100vw;
   display: flex;
   flex-direction: column; 
-  align-items: center; 
+  align-items: center;
 }
 
 .Social {
@@ -44,9 +42,6 @@
   align-items: center;
 }
 
-.istelogo { 
-  margin-top: auto; 
-}
 
 .emailBlock {
   width: 80%;
@@ -72,24 +67,17 @@
   background-color: black;
   margin-top: auto;
 }
-
+.istefoot{
+  width: 100vw;
+  text-align: center;
+  overflow: hidden;
+}
+.istelogo { 
+  width: 90%;
+  transform: translateY(10px);
+}
 @media (max-width: 1100px) {
 
-  .istelogo {
-  max-width: 30%; 
-  height: auto;
-
-  }
-
-  .footerContainer {
-    height: 60vh;
-    margin-top: auto;
-  }
-
-  .divider {
-  width: 70%;
-  height: 4px;
-}
 
 
 }

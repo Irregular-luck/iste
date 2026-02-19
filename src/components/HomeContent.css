@@ -224,7 +224,7 @@ h1.welcome-text {
   display: flex;
   justify-content: center;
   font-family: 'Poppins';
-  font-size: 48px;
+  font-size: 37px;
   font-weight: 200 ;
   margin-bottom: 10%;
 }
@@ -235,29 +235,57 @@ h1.welcome-text {
   width: 50%;
   margin: 5% auto;
 }
+
+
+/* animation pics  */
+
 .pics{
+  width: 100vw;
+  height: 60rem;
   display: flex;
   gap: 100px;
  
 }
-.slideshow {
+.slideshow-box {
+  width: 80%;
   overflow: hidden;
-  position: relative;
+  display: flex;   /* puts images side by side */
+  align-items: center;
+  justify-content: center;
 }
 
 .slide-row {
-  position: relative;
-  display: flex;   /* puts images side by side */
-  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
 }
-.pics img{
-object-fit: scale-down;
-margin-bottom: 10%;
-}
-.glimpse-side {
 
-  padding: 20px 0;
-  width: 120px;                /* adjust to match design */
+.slide-img {
+  height: auto;
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+/* FIRST image in pair (smaller) */
+.slide-row img:first-child {
+  width: clamp(180px, 25vw, 320px);
+  transform: scale(1);
+  opacity: 0.9;
+}
+
+/* SECOND image in pair (larger) */
+.slide-row img:last-child {
+  width: clamp(260px, 40vw, 500px);
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+/* adjust to match design */
+.glimpse-side {
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -268,17 +296,17 @@ margin-bottom: 10%;
   position: relative;
   font-family: 'Aquarium';
   writing-mode: vertical-lr;
-  font-size: 2500%;             
-  font-weight: 400;
+  font-size: 15vw;             
+  font-weight: 300;
   color: #1e3a8a;
-  margin-left: 350%;
 }
+
 .home-end a{
   color: #151617;
 
 }
 .home-end a:hover{
-  background-color: white;
+  transform: translate3d(0px,2px,-1px);
 }
 
 
