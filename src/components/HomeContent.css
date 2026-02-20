@@ -14,22 +14,25 @@
   flex-direction: column;
 }
 
+
+.wall {
+  background: url('./Group_15.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4% 0%;
+}
+
 .content {
   text-align: center;
   margin-top: 10%;
   font-weight: 700;
 }
 
-.wall {
-  background: url('./Group_15.png');
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-
 .welcome-section {
   width: 100%;
   margin: 3rem auto;
-  padding: 0 1rem; /* small side padding for narrow screens */
+  padding: 0 1rem;
 }
 
 .line {
@@ -40,7 +43,7 @@
 .line-top {
   width: 100%;
   margin-left: auto;
-  max-width: 65%; /* 2. Changed back to 65% to match the design */
+  max-width: 65%;
 }
 
 h1.welcome-text {
@@ -58,12 +61,13 @@ h1.welcome-text {
   justify-content: space-between;
   align-items: center;
   gap: 1.6rem;
-  flex-wrap: wrap; /* allow wrapping if space is tight */
+  flex-wrap: wrap;
 }
 
 .line-bottom {
   width: 100%;
   max-width: 65%;
+  margin-right: auto;
 }
 
 .subtitle {
@@ -71,26 +75,26 @@ h1.welcome-text {
   font-size: clamp(1rem, 4vw, 1.75rem);
   color: #3b4f8c;
   letter-spacing: 1px;
-  white-space: normal; /* allow wrapping on small screens */
+  white-space: normal;
   padding-right: 0.5rem;
 }
 
 .about-section-container {
-  display: grid;
-  grid-template-columns: minmax(80px, 180px) 1fr;
-  gap: 40px;
-  padding: 60px 40px;
-  align-items: start;
-  max-width: 100%;
+  width: 100%;
+  margin: 7vw auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 
+
 .about-title {
+  width: 20%;
   align-self: start;
   font-family: "Aquarium";
   font-size: clamp(8rem, 15vw, 17rem);
   font-weight: 500;
   color: #1E3A8A;
-  -webkit-text-stroke: 2px #1f398e;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   letter-spacing: 0;
@@ -98,6 +102,11 @@ h1.welcome-text {
   white-space: nowrap;
 }
 
+.about-section-container .about-title .line-top {
+  width: 100%;
+  margin-left: auto;
+  max-width: 40%;
+}
 
 /* anchor for A */
 .a-letter {
@@ -106,128 +115,121 @@ h1.welcome-text {
   font-family: inherit;
 }
 
-/* -- TUNE THESE: -- */
 .a-letter::after {
-  --thickness: 38%;   /* stroke thickness of the extension */
- --length: clamp(200%, 50vw, 500%);
-     /* how long the extension will be */
-  --offset-x: 91%;     /* horizontal offset from the A glyph (positive = right) */
-  --offset-y: 26%;      /* vertical offset relative to the A glyph center */
-
   content: "";
   position: absolute;
+  top: 7.28675%;
+  right: 90%;
 
-  /* We'll create a horizontal bar then rotate it so it appears as a vertical leg */
-  width: var(--length);
-  height: var(--thickness);
-  background: #1E3A8A;
-  
-  z-index: 2;
-  pointer-events: none;
+  width: 400%;
+  height: 0.117em;
 
-  /* Position near the middle of the A glyph, then rotate -90deg to make it vertical */
-  left: calc(100% - var(--offset-x));  /* 100% places it at the right edge of the A span */
-  top: var(--offset-y);                /* tune up/down, can be percentage like 50% */
-  transform-origin: left center;
-  transform: translateY(-50%) rotate(-180deg);
+  background: currentColor;
 }
-
 
 .about-content {
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
   color: #333;
-  align-self: start;
-  margin-left: 100px;
-  max-width: 1000px;
+}
+.about-content p{
+  margin-top: 16px;
+  font-size: min(1.5vw,22px);
+  
 }
 
-.about-content::before {
-  content: '';
-  display: block;
-  width: 60%;
-  max-width: 480px;
-  height: 6px;
-  background: #1E3A8A;
-  margin-bottom: 22px;
-}
-.regButtons{
+.regButtons {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
   padding: 2rem 1rem;
 }
-.pill-btn{
-  background-color:#1E3A8A;
+
+.pill-btn {
+  background-color: #1E3A8A;
   color: white;
-  border-radius: 999px;
+  border-radius: 20px;
   border: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 6.5rem;
   font-size: clamp(0.9rem, 2.5vw, 1.75rem);
   font-weight: 900;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 140px;
 }
+
 .pill-btn:hover {
   background-color: #1a2a5f;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
 }
+
 .events-heading {
   display: flex;
-  align-items: flex-end;      /* line sits on same baseline as text */          /* black strip */
+  align-items: flex-end;
   padding: 8px 0;
+  margin-top: 9vw;
 }
 
 /* the text */
 .events-heading h2 {
   margin: 0;
   padding: 0 16px;
-  font-size: 109px;
+  font-size: clamp(7rem, 10vw, 10rem);
   font-weight: 800;
   letter-spacing: 4px;
-  color:#2C2C2C;
+  color: #2C2C2C;
   font-family: "Aquarium";
-;                /* dark grey like in the image */
 }
 
 /* the line to the right */
 .events-heading::after {
   content: "";
-  flex: 1;                    /* fill remaining width */
-  height: 4px;                /* thickness of line */
+  flex: 1;
+  height: 4px;
   background: #2C2C2C;
   margin-right: 0;
-  
+
 }
+
 .linee {
-  border-bottom: 4px solid #151617;
   width: 100%;
+  height: 4px;
+  background: #151617;
+  margin: 2.5vw 0vw;
 }
+
+
 .event-images {
   display: grid;
   justify-items: center;
-  grid-template-columns: repeat(2, 1fr); /* 2 per row */
-  gap: 1px;                              /* spacing between images */
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 per row */
+  gap: 1px;
+  /* spacing between images */
   width: 85%;
-                           /* center the whole grid */
+  /* center the whole grid */
 }
+
 .event-images img {
-  width: 90%;        
-  height: 90%;      
-  object-fit:cover;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
   margin-left: 35%;
-   
+
 }
-.explore{
+
+.explore {
   display: flex;
   justify-content: center;
   font-family: 'Poppins';
   font-size: 37px;
-  font-weight: 200 ;
+  font-weight: 200;
   margin-bottom: 10%;
 }
+
 .linee2 {
   display: flex;
   align-items: center;
@@ -239,17 +241,19 @@ h1.welcome-text {
 
 /* animation pics  */
 
-.pics{
-  width: 100vw;
+.pics {
+  width: 100%;
   height: 60rem;
   display: flex;
   gap: 100px;
- 
+
 }
+
 .slideshow-box {
   width: 80%;
   overflow: hidden;
-  display: flex;   /* puts images side by side */
+  display: flex;
+  /* puts images side by side */
   align-items: center;
   justify-content: center;
 }
@@ -296,69 +300,95 @@ h1.welcome-text {
   position: relative;
   font-family: 'Aquarium';
   writing-mode: vertical-lr;
-  font-size: 15vw;             
+  font-size: 15vw;
   font-weight: 300;
   color: #1e3a8a;
 }
 
-.home-end a{
+.home-end a {
   color: #151617;
 
 }
-.home-end a:hover{
-  transform: translate3d(0px,2px,-1px);
+
+.home-end a:hover {
+  transform: translate3d(0px, 2px, -1px);
 }
 
 
+@media (max-width: 900px) {
+  .content img {
+    width: 200px;
+  }
 
-@media (min-width:700px){
-  .a-letter2{
+  .content {
+    font-weight: 600;
+  }
+  .content h1{
+    font-size: 65px;
+  }
+
+
+
+
+}
+
+@media (max-width: 700px) {}
+
+/* @media (min-width:700px) {
+  .a-letter2 {
     display: none;
   }
- 
- 
+
+
 }
-/* Responsive tweaks for welcome section */
+
 @media (max-width: 1024px) {
   .about-section-container {
     gap: 30px;
     padding: 50px 30px;
   }
+
   .about-content {
     margin-left: 80px;
   }
-    
-  
-  .pics{
-  display: flex;
-  gap: 10px;
- 
-}
-  .pics img{
-object-fit: scale-down;
-margin-bottom: 10%;
-height: 50%;
-width: 50%;
 
-}
-.glimpse-text {
-display: none;
-}
+
+  .pics {
+    display: flex;
+    gap: 10px;
+
+  }
+
+  .pics img {
+    object-fit: scale-down;
+    margin-bottom: 10%;
+    height: 50%;
+    width: 50%;
+
+  }
+
+  .glimpse-text {
+    display: none;
+  }
 }
 
 @media (max-width: 950px) {
+
   .line-top,
   .line-bottom {
     max-width: 55%;
   }
+
   h1.welcome-text {
     letter-spacing: 2px;
   }
+
   .pill-btn {
     padding: 0.7rem 1.2rem;
     font-size: clamp(0.85rem, 2.2vw, 1.5rem);
   }
-  .about-title{
+
+  .about-title {
     font-size: clamp(15rem, 8vw, 16rem);
     margin-top: 18%;
   }
@@ -368,30 +398,37 @@ display: none;
   .home {
     width: 100%;
   }
+
   .wall {
     padding-top: 8%;
     padding-bottom: 8%;
   }
+
   .content {
     margin-top: 15%;
   }
+
   .welcome-section {
     margin: 2.5rem auto;
     padding: 0 0.75rem;
   }
+
   .about-section-container {
     grid-template-columns: minmax(60px, 100px) 1fr;
     gap: 24px;
     padding: 40px 20px;
   }
-   .about-title{
+
+  .about-title {
     font-size: clamp(12rem, 8vw, 16rem);
     margin-left: -10%;
   }
+
   .about-content {
     margin-left: 50px;
     font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   }
+
   .about-content::before {
     width: 50%;
     max-width: 350px;
@@ -405,29 +442,33 @@ display: none;
     margin: 1.5rem auto;
     padding: 0 0.5rem;
   }
-  /* stack the bottom container so the line sits above the subtitle */
+
+  
   .bottom-container {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
   }
+
   .line-top,
   .line-bottom {
     width: 60%;
     max-width: 280px;
     height: 3px;
   }
+
   .subtitle {
     text-align: center;
     padding-right: 0;
     font-size: clamp(0.9rem, 3.5vw, 1.3rem);
   }
-  
+
   .about-section-container {
     grid-template-columns: 1fr;
     gap: 16px;
     padding: 25px 16px;
   }
+
   .about-title {
     writing-mode: horizontal-tb;
     transform: none;
@@ -436,10 +477,12 @@ display: none;
     line-height: 1.1;
     margin: 0 auto;
   }
+
   .about-content {
     margin-left: 0;
     font-size: clamp(0.9rem, 1.4vw, 1rem);
   }
+
   .about-content::before {
     width: 35%;
     max-width: 200px;
@@ -447,84 +490,97 @@ display: none;
     margin-right: auto;
     height: 3px;
   }
-  
+
   .regButtons {
     gap: 1rem;
     padding: 1.5rem 0.75rem;
   }
+
   .pill-btn {
     padding: 0.6rem 1rem;
     font-size: clamp(0.75rem, 2vw, 1.1rem);
     min-width: 120px;
   }
-  
+
 }
 
 @media (max-width: 550px) {
   .content {
     margin-top: 20%;
   }
+
   .content h1 {
     font-size: clamp(1.2rem, 5vw, 1.8rem);
   }
+
   .content h3 {
     font-size: clamp(0.9rem, 3.5vw, 1.2rem);
   }
+
   .content p {
     font-size: clamp(0.8rem, 3vw, 1rem);
   }
-  
+
   .welcome-section {
     margin: 1rem auto;
   }
+
   h1.welcome-text {
     font-size: clamp(2rem, 8vw, 4rem);
     letter-spacing: 1px;
     margin: 0.8rem 0;
   }
+
   .line-top,
   .line-bottom {
     width: 70%;
     max-width: 200px;
   }
+
   .subtitle {
     font-size: clamp(0.8rem, 3vw, 1.1rem);
   }
-  
+
   .about-section-container {
     grid-template-columns: 1fr;
     gap: 12px;
     padding: 16px 12px;
   }
+
   .about-title {
     font-size: clamp(4rem, 3.5vw, 1.6rem);
     margin-bottom: 0.5rem;
-    
+
   }
-  .a-letter{
+
+  .a-letter {
     display: none;
   }
-  .a-letter2{
+
+  .a-letter2 {
     font-family: inherit;
   }
+
   .about-content {
     font-size: clamp(0.85rem, 1.3vw, 0.95rem);
     line-height: 1.5;
   }
+
   .about-content::before {
     width: 40%;
     max-width: 150px;
   }
-  
+
   .regButtons {
     flex-direction: column;
     gap: 0.75rem;
     padding: 1rem 0.5rem;
   }
+
   .pill-btn {
     width: 100%;
     padding: 0.6rem;
     font-size: clamp(0.7rem, 1.8vw, 1rem);
     min-width: unset;
   }
-}
+} */

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './Navbar.module.css'
+import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
 
   const [hideNavbar, setHideNavbar] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     let lastScrollY = window.scrollY
@@ -15,6 +17,7 @@ const Navbar = () => {
       if (currentScrollY > lastScrollY && currentScrollY > 80) {
         // scrolling DOWN
         setHideNavbar(true)
+        setMenuOpen(false) 
       } else {
         // scrolling UP
         setHideNavbar(false)
@@ -34,11 +37,18 @@ const Navbar = () => {
         <span className={styles.brand}>ISTE GECK</span>
       </div>
 
-      <ul>
-        <li><NavLink to='/' className={styles.link}>Home</NavLink></li>
-        <li><NavLink to='/Events' className={styles.link}>Events</NavLink></li>
-        <li><NavLink to='/Team' className={styles.link}>Team</NavLink></li>
-        <li><NavLink to='/Gallery' className={styles.link}>Gallery</NavLink></li>
+      <div
+        className={styles.hamburger}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <FaBars />
+      </div>
+
+      <ul className={menuOpen ? styles.showMenu : ""} >
+        <li><NavLink to='/' className={styles.link} onClick={() => setMenuOpen(false)}>Home</NavLink></li>
+        <li><NavLink to='/Events' className={styles.link} onClick={() => setMenuOpen(false)}>Events</NavLink></li>
+        <li><NavLink to='/Team' className={styles.link} onClick={() => setMenuOpen(false)}>Team</NavLink></li>
+        <li><NavLink to='/Gallery' className={styles.link} onClick={() => setMenuOpen(false)}>Gallery</NavLink></li>
       </ul>
     </div>
   )
