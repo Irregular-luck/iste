@@ -75,8 +75,21 @@
   width: 90%;
   transform: translateY(10px);
 }
-@media (max-width: 1100px) {
 
+
+@media (max-width: 700px) {
+.emailLink {
+font-size: 20px;
+}
+.Icons a {
+font-size: 50px;
+}
+.Address {
+font-size: 17px;
+}
+.Social {
+padding-top: 50px;
+}
 
 
 }

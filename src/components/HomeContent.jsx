@@ -69,7 +69,7 @@ const HomeContent = () => {
           <span className="a-letter">A</span>BOUT US
         </div>
         <div className="about-content">
-        <div className="line line-top"></div>
+          <div className="line about-line"></div>
           <p>
             The ISTE Student Chapter at Government Engineering College,
             Kozhikode (GECK), is one of the most active and influential student
@@ -107,9 +107,6 @@ const HomeContent = () => {
       <div class="events-heading">
         <h2>EVENTS</h2>
       </div>
-      <br />
-      <br />
-      <br />
       <div className="linee"></div>
       <div className="linee"></div>
       <div className="event-images">
@@ -124,7 +121,6 @@ const HomeContent = () => {
           <u>EXPLORE MORE&gt;&gt;</u>
         </a>
         <div className="linee2"></div>
-        <br />
         <div className="pics">
           <div className="slideshow-box">
             <AnimatePresence mode="wait">
@@ -155,4 +151,3 @@ const HomeContent = () => {
 };
 
 export default HomeContent;
-    
