@@ -14,7 +14,7 @@ npm install
 ## Run Development Server
 ```bash
 npm run dev
-npm run -- --host
+npm run dev -- --host
 ```
 
 The development server will start and you can view the React application in your browser.
