@@ -41,6 +41,10 @@
   align-items: center;
 }
 
+.Icons a:hover{
+  background-color: black;
+}
+
 
 .emailBlock {
   width: 80%;

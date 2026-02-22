@@ -41,7 +41,6 @@ export default function TeamContent() {
         </div>
       </div>
 
-      {/* ✅ ONE Lightbox only */}
       <Lightbox
         open={open}
         close={() => setOpen(false)}
