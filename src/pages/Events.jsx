@@ -21,16 +21,19 @@ const EventsTitle = () => {
 }
 
 const EventsContent = ({ eventIndex = 0 }) => {
-  const event = eventsData[eventIndex]
   return (
     <div className="events-content-container">
-      <div className="events-content-left">
-        <p className="events-description">{event.description}</p>
-        <div className="events-content-line"></div>
-      </div>
-      <div className="events-content-right">
-        <span className="events-rotated-text">IGNIFEX</span>
-      </div>
+      {eventsData.map((event, index) => (
+        <div key={index} className="events-content-item">
+          <div className="events-content-left">
+            <p className="events-description">{event.description}</p>
+            <div className="events-content-line"></div>
+          </div>
+          <div className="events-content-right">
+            <span className="events-rotated-text">{event.sideText}</span>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

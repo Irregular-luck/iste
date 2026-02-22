@@ -104,7 +104,7 @@ const HomeContent = () => {
         <button className="pill-btn">Aakrithi Registration</button>
       </div>
 
-      <div class="events-heading">
+      <div className="events-heading">
         <h2>EVENTS</h2>
       </div>
       <div className="linee"></div>
