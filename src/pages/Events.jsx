@@ -20,20 +20,25 @@ const EventsTitle = () => {
   )
 }
 
-const EventsContent = ({ eventIndex = 0 }) => {
+const EventsContent = () => {
   return (
     <div className="events-content-container">
-      {eventsData.map((event, index) => (
-        <div key={index} className="events-content-item">
-          <div className="events-content-left">
-            <p className="events-description">{event.description}</p>
-            <div className="events-content-line"></div>
+      {eventsData.map((event, index) => {
+        // Determine if the item is even or odd for alternating layout
+        const isEven = index % 2 !== 0;
+        
+        return (
+          <div key={index} className={`events-content-item ${isEven ? 'reverse' : ''}`}>
+            <div className="events-content-text-section">
+              <p className="events-description">{event.description}</p>
+              <div className="events-content-line"></div>
+            </div>
+            <div className="events-content-title-section">
+              <span className="events-rotated-text">{event.sideText}</span>
+            </div>
           </div>
-          <div className="events-content-right">
-            <span className="events-rotated-text">{event.sideText}</span>
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   )
 }

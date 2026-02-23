@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@200;400;700&display=swap');
 
 @font-face {
   font-family: 'Impact';
   src: url('/impact.ttf') format('truetype');
 }
 
+/* Page Wrapper & Decorative Lines */
 .decorative-lines-container {
   display: flex;
   flex-direction: column;
@@ -24,6 +25,7 @@
   margin-right: -50vw;
 }
 
+/* Top Title Section */
 .events-title-container {
   display: flex;
   align-items: flex-start;
@@ -54,28 +56,46 @@
   margin-bottom: 20px;
 }
 
-/* Events Content Component */
+/* --- Events Content Container --- */
 .events-content-container {
   display: flex;
-  gap: 3rem;
-  padding: 3rem 2rem;
+  flex-direction: column; /* Stack the events vertically */
+  gap: 10rem; /* Space between different events */
+  padding: 3rem 8rem;
   background-color: #FAF9F6;
-  align-items: flex-start;
+  overflow: hidden;
 }
 
+/* Individual Event Row */
+.events-content-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 5rem;
+  width: 100%;
+}
+
+/* Alternating Layout: Flips every 2nd, 4th, 6th item */
+.events-content-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Text Side */
 .events-content-left {
-  flex: 1;
-  padding-left: 100px;
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0; /* Removed hardcoded padding so it centers properly */
 }
 
 .events-description {
   font-family: 'Inter', sans-serif;
-  font-size: 2.5rem;
-  line-height: 1.2;
+  font-size: 1.4rem;
+  line-height: 1.5;
   color: #333;
   text-align: justify;
   margin: 0 0 1.5rem 0;
-  word-spacing: 15px;
+  word-spacing: 1px; /* Reduced slightly from 15px for better readability */
 }
 
 .events-content-line {
@@ -85,27 +105,28 @@
   max-width: 85%;
 }
 
+/* Rotated Title Side */
 .events-content-right {
+  flex: 0.8;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  min-width: 150px;
 }
 
 .events-rotated-text {
-  font-family: 'Poppins', sans-serif;
-  font-size: 18rem;
-  font-weight: 400;
+  font-family: 'Poppins', sans-serif; /* Changed to Impact to match the image */
+  font-size: clamp(8rem, 15vw, 15rem); /* Scales smoothly */
   color: #1E3A8A;
-  background-color: #FAF9F6;
-  letter-spacing: 2px;
+  letter-spacing: 8px;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
   white-space: nowrap;
+  text-transform: uppercase;
+  line-height: 0.8;
 }
 
-/* Responsive Design */
+/* --- Responsive Design --- */
 @media (max-width: 1024px) {
   .decorative-lines-container {
     gap: 4rem;
@@ -118,6 +139,15 @@
 
   .events-title-line {
     height: 6px;
+  }
+
+  .events-content-container {
+    padding: 3rem 4rem;
+    gap: 6rem;
+  }
+
+  .events-description {
+    font-size: 1.5rem;
   }
 }
 
@@ -141,6 +171,41 @@
     height: 5px;
     min-width: 80px;
   }
+
+  .events-content-container {
+    padding: 2rem;
+    gap: 5rem;
+  }
+
+  /* Mobile Flex Stacking */
+  .events-content-item,
+  .events-content-item:nth-child(even) {
+    flex-direction: column; /* Stack vertically on small screens */
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .events-content-right {
+    order: 1; /* Puts the Event Title on top */
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .events-content-left {
+    order: 2; /* Puts the Description below the title */
+    width: 100%;
+  }
+
+  .events-rotated-text {
+    writing-mode: horizontal-tb; /* Reset back to horizontal reading */
+    transform: none;
+    font-size: 5rem;
+    line-height: 1;
+  }
+
+  .events-content-line {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -162,16 +227,14 @@
 
   .events-title {
     font-size: 60px !important;
-    white-space: nowrap !important;
   }
 
-  .events-title-line {
-    height: 4px;
-    width: auto;
-    flex: 1;
-    min-width: 50px;
-    align-self: flex-end;
-    margin-bottom: 2px;
+  .events-rotated-text {
+    font-size: 4rem;
+  }
+
+  .events-description {
+    font-size: 1.2rem;
   }
 }
 
@@ -180,7 +243,7 @@
     font-size: 48px !important;
   }
 
-  .events-title-line {
-    height: 3px;
+  .events-rotated-text {
+    font-size: 3rem;
   }
 }
