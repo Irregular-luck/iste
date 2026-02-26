@@ -17,19 +17,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0px 50px;
 }
 
 .gallery .title {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: left;
     margin-top: 200px;
-
 }
 
 .gallery .title .gallery-title {
     font-family: 'Impact', sans-serif !important;
-    width: 27vw !important;
     display: flex !important;
     justify-content: right !important;
     align-items: end !important;
@@ -70,13 +70,11 @@ body {
     margin: 10px;
 }
 
-.gallery .image-frames .image-ani {
-  opacity: 0.6;
-  transform: scale(0.9);
-  filter: blur(3px);
-  animation: reveal linear forwards;
-  animation-timeline: view();
-  animation-range: entry 10% cover 36%;
+.gallery .image-frames{
+    transform: scale(1);
+}
+.gallery .image-frames .frame img:hover{
+    transform: translateY(-3px);
 }
 
 @keyframes reveal {
@@ -85,4 +83,18 @@ body {
     transform: scale(1);
     filter: blur(0);
   }
+}
+
+
+
+@media (max-width: 900px) {
+  
+}
+
+@media (max-width: 700px) {
+
+}
+
+@media (max-width: 400px) {
+
 }

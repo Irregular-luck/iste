@@ -9,7 +9,6 @@ import { client, urlFor } from "../lib/sanity";
 export default function TeamContent() {
   // 1. Initialize state for your Sanity images
   const [teamData, setTeamData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -21,8 +20,6 @@ export default function TeamContent() {
         setTeamData(result || []); 
       } catch (err) {
         console.error("Sanity Fetch Error:", err);
-      } finally {
-        setLoading(false);
       }
     }
     fetchImages();

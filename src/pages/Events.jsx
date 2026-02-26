@@ -15,7 +15,6 @@ const EventsTitle = () => {
   return (
     <div className="events-title-container">
       <h1 className="events-title">EVENTS</h1>
-      <div className="events-title-line"></div>
     </div>
   )
 }

@@ -11,27 +11,20 @@
   flex-direction: column;
   gap: 6rem;
   padding: 10rem 0 2rem 0;
-  background-color: #FAF9F6;
 }
 
 .decorative-line {
   height: 4px;
   background-color: #8C8C8C;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
 }
 
 /* Top Title Section */
 .events-title-container {
   display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 2rem 8rem;
-  background-color: #FAF9F6;
+  align-items: flex-end;
+  padding: 0px 50px;
+  margin: 4vw 0vw;
 }
 
 .events-title {
@@ -39,30 +32,25 @@
   font-size: 180px !important;
   font-weight: 300 !important;
   color: #1E3A8A !important;
-  margin: 0 !important;
-  letter-spacing: 2px !important;
-  white-space: nowrap !important;
-  line-height: 1 !important;
-  display: flex !important;
-  align-items: flex-end !important;
 }
 
-.events-title-line {
-  height: 10px;
-  background-color: #1e3a8a;
+.events-title-container::after {
+  content: "";
   flex: 1;
-  max-width: 73vw;
-  align-self: flex-end;
-  margin-bottom: 20px;
+  height: 9px;
+  background: #1E3A8A;
+  margin-right: 0;
+  margin-bottom: 2%;
 }
 
 /* --- Events Content Container --- */
 .events-content-container {
   display: flex;
-  flex-direction: column; /* Stack the events vertically */
-  gap: 10rem; /* Space between different events */
-  padding: 3rem 8rem;
-  background-color: #FAF9F6;
+  flex-direction: column;
+  /* Stack the events vertically */
+  gap: 10rem;
+  /* Space between different events */
+  padding: 0px 50px;
   overflow: hidden;
 }
 
@@ -85,7 +73,8 @@
   flex: 1.2;
   display: flex;
   flex-direction: column;
-  padding-left: 0; /* Removed hardcoded padding so it centers properly */
+  padding-left: 0;
+  /* Removed hardcoded padding so it centers properly */
 }
 
 .events-description {
@@ -95,7 +84,8 @@
   color: #333;
   text-align: justify;
   margin: 0 0 1.5rem 0;
-  word-spacing: 1px; /* Reduced slightly from 15px for better readability */
+  word-spacing: 1px;
+  /* Reduced slightly from 15px for better readability */
 }
 
 .events-content-line {
@@ -114,8 +104,10 @@
 }
 
 .events-rotated-text {
-  font-family: 'Poppins', sans-serif; /* Changed to Impact to match the image */
-  font-size: clamp(8rem, 15vw, 15rem); /* Scales smoothly */
+  font-family: 'Poppins', sans-serif;
+  /* Changed to Impact to match the image */
+  font-size: clamp(8rem, 15vw, 15rem);
+  /* Scales smoothly */
   color: #1E3A8A;
   letter-spacing: 8px;
   writing-mode: vertical-rl;
@@ -126,30 +118,6 @@
   line-height: 0.8;
 }
 
-/* --- Responsive Design --- */
-@media (max-width: 1024px) {
-  .decorative-lines-container {
-    gap: 4rem;
-    padding: 6rem 0 1.5rem 0;
-  }
-
-  .events-title {
-    font-size: 140px !important;
-  }
-
-  .events-title-line {
-    height: 6px;
-  }
-
-  .events-content-container {
-    padding: 3rem 4rem;
-    gap: 6rem;
-  }
-
-  .events-description {
-    font-size: 1.5rem;
-  }
-}
 
 @media (max-width: 768px) {
   .decorative-lines-container {
@@ -167,11 +135,6 @@
     font-size: 100px !important;
   }
 
-  .events-title-line {
-    height: 5px;
-    min-width: 80px;
-  }
-
   .events-content-container {
     padding: 2rem;
     gap: 5rem;
@@ -180,24 +143,28 @@
   /* Mobile Flex Stacking */
   .events-content-item,
   .events-content-item:nth-child(even) {
-    flex-direction: column; /* Stack vertically on small screens */
+    flex-direction: column;
+    /* Stack vertically on small screens */
     align-items: flex-start;
     gap: 1.5rem;
   }
 
   .events-content-right {
-    order: 1; /* Puts the Event Title on top */
+    order: 1;
+    /* Puts the Event Title on top */
     width: 100%;
     justify-content: flex-start;
   }
 
   .events-content-left {
-    order: 2; /* Puts the Description below the title */
+    order: 2;
+    /* Puts the Description below the title */
     width: 100%;
   }
 
   .events-rotated-text {
-    writing-mode: horizontal-tb; /* Reset back to horizontal reading */
+    writing-mode: horizontal-tb;
+    /* Reset back to horizontal reading */
     transform: none;
     font-size: 5rem;
     line-height: 1;
@@ -221,8 +188,6 @@
   .events-title-container {
     gap: 1rem;
     padding: 1rem;
-    align-items: flex-start;
-    flex-wrap: nowrap;
   }
 
   .events-title {
