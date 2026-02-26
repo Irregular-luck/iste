@@ -22,7 +22,7 @@ const EventsTitle = () => {
 
 const EventsContent = () => {
     return (
-        <div>
+        <div className="events-page-wrapper">
             <EventsDecorativeLines />
             <EventsTitle />
             <div className="events-content-container">
