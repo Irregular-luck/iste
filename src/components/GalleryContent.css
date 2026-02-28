@@ -41,7 +41,11 @@ body {
     display: flex;
     align-items: end;
 }
-
+.frame {
+  display: flex;
+  flex-wrap: wrap;   /* 👈 ADD THIS */
+  gap: 20px;
+}
 .gallery .title::after {
     content: "";
     flex: 1;
