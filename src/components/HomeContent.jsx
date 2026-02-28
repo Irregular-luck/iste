@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import "./HomeContent.css";
+import { Link } from 'react-router-dom';
 
 const images = ["pic1.png", "pic2.png", "pic3.png", "pic4.png"];
 const HomeContent = () => {
@@ -64,6 +65,11 @@ const HomeContent = () => {
         </div>
       </div>
 
+      <div className="regButtons">
+        <button className="pill-btn">Membership</button>
+        <button className="pill-btn">Aakrithi Registration</button>
+      </div>
+
       <div className="about-section-container">
         <div className="about-title">
           <span className="a-letter">A</span>BOUT US
@@ -99,10 +105,6 @@ const HomeContent = () => {
           </p>
         </div>
       </div>
-      <div className="regButtons">
-        <button className="pill-btn">Membership</button>
-        <button className="pill-btn">Aakrithi Registration</button>
-      </div>
 
       <div className="events-heading">
         <h2>EVENTS</h2>
@@ -110,16 +112,27 @@ const HomeContent = () => {
       <div className="linee"></div>
       <div className="linee"></div>
       <div className="event-images">
-        <img src="./ignifex.png" alt="ignifex" />
-        <img src="./logo.png" alt="iste-logo" />
-        <img src="aakrithi.png" alt="aakrithi" />
-        <img src="./insignis.png" alt="insignis" />
+        <Link to="/Events#ignifex">
+          <img src="./ignifex.png" alt="ignifex" />
+        </Link>
+
+        <Link to="/Events#general">
+          <img src="./logo.png" alt="iste-logo" />
+        </Link>
+
+        <Link to="/Events#aakrithi">
+          <img src="aakrithi.png" alt="aakrithi" />
+        </Link>
+
+        <Link to="/Events#insignis">
+          <img src="./insignis.png" alt="insignis" />
+        </Link>
       </div>
 
       <div className="home-end">
-        <a className="explore" href="www.google.com">
+        <Link className="explore" to="/Events">
           <u>EXPLORE MORE&gt;&gt;</u>
-        </a>
+        </Link>
         <div className="linee2"></div>
         <div className="pics">
           <div className="slideshow-box">
@@ -142,9 +155,9 @@ const HomeContent = () => {
             <span className="glimpse-text">GLIMPSE</span>
           </div>
         </div>
-        <a className="explore" href="www.google.com">
+        <Link className="explore" to="/Gallery">
           VIEW MORE&gt;&gt;
-        </a>
+        </Link>
       </div>
     </div>
   );

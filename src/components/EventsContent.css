@@ -71,11 +71,13 @@
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
+
 }
 
 
 .events-content-text-section {
   width: 83vw;
+ scroll-margin-top: 200px;
 }
 
 

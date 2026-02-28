@@ -23,8 +23,7 @@ body {
 .gallery .title {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: left;
+    align-items: flex-end;
     margin-top: 200px;
 }
 
@@ -43,8 +42,9 @@ body {
     align-items: end;
 }
 
-.gallery .title .title-bar {
-    width: 65vw;
+.gallery .title::after {
+    content: "";
+    flex: 1;
     height: 13px;
     height: 1vw !important;
     background-color: #1E3A8A;
@@ -52,49 +52,93 @@ body {
     margin-left: 13px;
 }
 
-.gallery .image-frames{
+.gallery .image-frames {
+    width: 100%;
     margin-top: 70px;
     display: flex;
     flex-direction: column;
 }
 
-.gallery .image-frames .frame{
+.gallery .image-frames .frame {
+    width: 100%;
     margin-bottom: 50px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
-.gallery .image-frames .frame img{
-    width: 30vw;
-    margin: 10px;
+.gallery .image-frames .frame img {
+    width: 27vw;
 }
 
-.gallery .image-frames{
+.gallery .image-frames {
     transform: scale(1);
 }
-.gallery .image-frames .frame img:hover{
+
+.gallery .image-frames .frame img:hover {
     transform: translateY(-3px);
 }
 
 @keyframes reveal {
-  to {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
 }
 
 
 
 @media (max-width: 900px) {
-  
+.gallery {
+    padding: 0px 40px;
+}   
+
 }
 
 @media (max-width: 700px) {
+.gallery {
+    padding: 0px 30px;
+}
+.gallery .title {
+    margin-top: 150px;
+}
+.gallery .title .gallery-title {
+    font-size: 9.5vw !important;
+}
+.gallery .image-frames .frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.gallery .image-frames .frame img {
+    width: 60vw;
+}
+
+
 
 }
 
 @media (max-width: 400px) {
+.gallery {
+    padding: 0px 20px;
+}
+.gallery .title {
+    margin-top: 150px;
+}
+.gallery .title .gallery-title {
+    font-size: 13vw !important;
+}
+.gallery .image-frames .frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.gallery .image-frames .frame img {
+    width: 70vw;
+}
+
+
 
 }
