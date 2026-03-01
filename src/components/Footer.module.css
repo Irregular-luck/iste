@@ -76,7 +76,7 @@
   overflow: hidden;
 }
 .istelogo { 
-  width: 90%;
+  width: 60%;
   transform: translateY(10px);
 }
 
@@ -94,6 +94,11 @@ font-size: 17px;
 .Social {
 padding-top: 50px;
 }
+
+.istelogo { 
+  width: 90%;
+}
+
 
 
 }

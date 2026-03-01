@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import "./HomeContent.css";
 import { Link } from "react-router-dom";
@@ -59,10 +60,24 @@ const HomeContent = () => {
   const pair =
     shuffledImages.length > 0
       ? [
-          shuffledImages[index],
-          shuffledImages[(index + 1) % shuffledImages.length],
-        ]
+        shuffledImages[index],
+        shuffledImages[(index + 1) % shuffledImages.length],
+      ]
       : [];
+
+
+  const sliderRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (!sliderRef.current) return;
+
+    const scrollAmount = 320;
+
+    sliderRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="home">
@@ -84,6 +99,67 @@ const HomeContent = () => {
           <div className="line line-bottom"></div>
           <span className="subtitle">GATEWAY TO EXPLORE US</span>
         </div>
+      </div>
+
+      <div className="about-section-container">
+        <div className="about-title">
+          <span className="a-letter">A</span>BOUT US
+        </div>
+        <div className="about-content">
+          <div className="line about-line"></div>
+          <p>
+            The ISTE Student Chapter at Government Engineering College,
+            Kozhikode (GECK), is one of the most active and influential student
+            chapters under the Kerala Section of ISTE. Dedicated to fostering
+            the holistic development of students, this chapter organizes a
+            variety of technical, managerial, and extracurricular activities,
+            providing a platform for members to enhance their skills and
+            knowledge.
+          </p>
+
+          <p>
+            Our chapter has earned notable recognition over the years, including
+            the Best Student Chapter Award, awarded for our consistent
+            excellence in conducting events, workshops, and fostering a vibrant
+            academic community. Additionally, the chapter has received the
+            Special Appreciation Award for its outstanding contributions to
+            technical education and student engagement.
+          </p>
+
+          <p>
+            The Best Student Awards are also given to recognize exceptional
+            individuals who demonstrate excellence in academics, leadership, and
+            active participation in the chapter's activities. The ISTE GECK
+            Student Chapter continues to uphold a tradition of excellence,
+            making significant strides in creating future-ready professionals
+            and leaders in engineering and technology.
+          </p>
+        </div>
+      </div>
+
+      <div className="events-registration">
+        <h2>Events Registration</h2>
+      </div>
+
+
+      <div className="event-registration-wrapper">
+
+        <button className="nav-btn left" onClick={() => scroll("left")}>
+          ❮
+        </button>
+
+        <div className="event-registration" ref={sliderRef}>
+          <div className="event-card"></div>
+          <div className="event-card"></div>
+          <div className="event-card"></div>
+          <div className="event-card"></div>
+          <div className="event-card"></div>
+        </div>
+
+        <button className="nav-btn right" onClick={() => scroll("right")}>
+          ❯
+        </button>
+
       </div>
 
       <div className="regButtons">
