@@ -138,7 +138,7 @@ const HomeContent = () => {
       </div>
 
       <div className="events-registration">
-        <h2>Events Registration</h2>
+        <h2>Upcoming Events</h2>
       </div>
 
 
