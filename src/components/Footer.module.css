@@ -14,7 +14,7 @@
   gap: 20px;
   width: 80%; /* Ensures it fills its parent */
   box-sizing: border-box;
-  padding-top: 200px;
+  padding-top: 100px;
 
 }
 
@@ -52,7 +52,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: auto;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 .emailLink {
@@ -65,19 +65,29 @@
 }
 
 .divider {
-  width: 60%;
+  width: 70%;
   height: 8px;
   background-color: black;
   margin-top: auto;
 }
 .istefoot{
   width: 100%;
+  height: 500px;
   text-align: center;
   overflow: hidden;
 }
 .istelogo { 
-  width: 60%;
-  transform: translateY(10px);
+  width: clamp(641px, 60%, 800px);
+  height: 100%;
+}
+
+@media (max-width:900px){
+  .istelogo{
+    width: 600px;
+  }
+  .istefoot{
+    height: 460px;
+  }
 }
 
 
@@ -94,6 +104,9 @@ font-size: 17px;
 .Social {
 padding-top: 50px;
 }
+.istefoot{
+  height: 400px;
+} 
 
 .istelogo { 
   width: 90%;
@@ -101,4 +114,15 @@ padding-top: 50px;
 
 
 
+
+}
+
+@media (max-width:400px) {
+  .istefoot{
+  height: 300px;
+} 
+  .istelogo { 
+    width: 80%;
+  }
+  
 }

@@ -8,78 +8,69 @@ import { client, urlFor } from "../lib/sanity";
 const HomeContent = () => {
   const [index, setIndex] = useState(0);
   const [events, setEvents] = useState([]);
-  const [sliderImages, setSliderImages] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [shuffledImages, setShuffledImages] = useState([]);
+
+  // Fetch Home data from Sanity (Upcoming Events)
   useEffect(() => {
-  async function fetchHome() {
-    try {
-      const data = await client.fetch(`*[_type == "home"][0]`);
-
-      setUpcomingEvents(data?.events2 || []);
-
-    } catch (err) {
-      console.error("Sanity Fetch Error:", err);
+    async function fetchHome() {
+      try {
+        const data = await client.fetch(`*[_type == "home"][0]`);
+        setUpcomingEvents(data?.events2 || []);
+      } catch (err) {
+        console.error("Sanity Fetch Error:", err);
+      }
     }
-  }
-
-  fetchHome();
-}, []);
+    fetchHome();
+  }, []);
 
   // Shuffle helper
   const shuffleArray = (array) => {
     return [...array].sort(() => Math.random() - 0.5);
   };
 
-  const [shuffledImages, setShuffledImages] = useState([]);
-
-  // Fetch Home data from Sanity
+  // Fetch Home data from Sanity (Events & Slider)
   useEffect(() => {
     async function fetchHome() {
       try {
         const data = await client.fetch(`*[_type == "home"][0]`);
         setEvents(data?.events || []);
 
-        const sliderUrls =
-          data?.slider?.map((img) => urlFor(img).url()) || [];
+        // CRITICAL UPDATE: Map the Sanity images into objects with an 'id'
+        // Framer Motion needs this ID to track the image sliding left!
+        const sliderData =
+          data?.slider?.map((img, i) => ({
+            id: i,
+            url: urlFor(img).url(),
+          })) || [];
 
-        setSliderImages(sliderUrls);
-        setShuffledImages(shuffleArray(sliderUrls));
+        setShuffledImages(shuffleArray(sliderData));
       } catch (err) {
         console.error("Sanity Fetch Error:", err);
       }
     }
-
     fetchHome();
   }, []);
 
-  // Slider animation interval
+  // Slider animation interval (Updates 1 step forward every 3 seconds)
   useEffect(() => {
     if (shuffledImages.length === 0) return;
 
     const interval = setInterval(() => {
-      setIndex((prev) => {
-        const next = prev + 2;
-
-        if (next >= shuffledImages.length) {
-          setShuffledImages(shuffleArray(sliderImages));
-          return 0;
-        }
-
-        return next;
-      });
+      setIndex((prev) => (prev + 1) % shuffledImages.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [shuffledImages, sliderImages]);
+  }, [shuffledImages]);
 
-  const pair =
+  // Determine which two items are currently visible on screen
+  const visibleItems =
     shuffledImages.length > 0
       ? [
-        shuffledImages[index],
-        shuffledImages[(index + 1) % shuffledImages.length],
-      ]
+          { ...shuffledImages[index], position: "left" },
+          { ...shuffledImages[(index + 1) % shuffledImages.length], position: "right" },
+        ]
       : [];
-
 
   const sliderRef = useRef(null);
 
@@ -92,6 +83,27 @@ const HomeContent = () => {
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
+  };
+
+  // The conveyor belt animation physics
+  const slideVariants = {
+    enter: (position) => ({
+      x: position === "left" ? "-50%" : "100%",
+      scale: position === "left" ? 0.85 : 1,
+      opacity: 0,
+    }),
+    center: (position) => ({
+      x: position === "left" ? "-55%" : "50%",
+      scale: position === "left" ? 0.85 : 1,
+      opacity: position === "left" ? 0.9 : 1,
+      zIndex: position === "left" ? 1 : 2,
+    }),
+    exit: {
+      x: "-55%",
+      scale: 0.85,
+      opacity: 0,
+      zIndex: 0,
+    },
   };
 
   return (
@@ -131,7 +143,6 @@ const HomeContent = () => {
             providing a platform for members to enhance their skills and
             knowledge.
           </p>
-
           <p>
             Our chapter has earned notable recognition over the years, including
             the Best Student Chapter Award, awarded for our consistent
@@ -140,7 +151,6 @@ const HomeContent = () => {
             Special Appreciation Award for its outstanding contributions to
             technical education and student engagement.
           </p>
-
           <p>
             The Best Student Awards are also given to recognize exceptional
             individuals who demonstrate excellence in academics, leadership, and
@@ -155,30 +165,28 @@ const HomeContent = () => {
       <div className="events-registration">
         <h2>Upcoming Events</h2>
       </div>
-
+      <div className="event-line"></div>
 
       <div className="event-registration-wrapper">
-
         <button className="nav-btn left" onClick={() => scroll("left")}>
           ❮
         </button>
 
         <div className="event-registration" ref={sliderRef}>
-  {upcomingEvents.map((img, index) => (
-    <div className="event-card" key={index}>
-      <img
-        src={urlFor(img).width(500).url()}
-        alt="upcoming-event"
-        className="event-img"
-      />
-    </div>
-  ))}
-</div>
+          {upcomingEvents.map((img, index) => (
+            <div className="event-card" key={index}>
+              <img
+                src={urlFor(img).width(500).url()}
+                alt="upcoming-event"
+                className="event-img"
+              />
+            </div>
+          ))}
+        </div>
 
         <button className="nav-btn right" onClick={() => scroll("right")}>
           ❯
         </button>
-
       </div>
 
       <div className="regButtons">
@@ -213,25 +221,35 @@ const HomeContent = () => {
         <div className="linee2"></div>
 
         <div className="pics">
-          <div className="slideshow-box">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={index}
-                className="slide-row"
-                initial={{ x: 120, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -120, opacity: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                {pair.map((img, i) => (
+          {/* UPDATED SLIDESHOW BOX WITH CONVEYOR ANIMATION */}
+          <div
+            className="slideshow-box"
+            style={{ position: "relative", overflow: "hidden" }}
+          >
+            <AnimatePresence initial={false}>
+              {visibleItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  custom={item.position}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    type: "spring",
+                    stiffness: 250,
+                    damping: 25,
+                    mass: 1,
+                  }}
+                  className="conveyor-card"
+                >
                   <img
-                    key={i}
-                    src={img}
-                    alt={`slide-${i}`}
-                    className="slide-img"
+                    src={item.url}
+                    alt={`Slide ${item.id}`}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
-                ))}
-              </motion.div>
+                </motion.div>
+              ))}
             </AnimatePresence>
           </div>
 

@@ -16,7 +16,7 @@
 
 
 .wall {
-  background: url('./public/Group_15.png');
+  background: url('/Group_15.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -155,6 +155,7 @@ h1.welcome-text {
   object-fit: cover;
   border-radius: 12px;
 }
+
 /* the text */
 .events-registration h2 {
   font-family: 'Poppins', sans-serif;
@@ -170,10 +171,17 @@ h1.welcome-text {
 .events-registration::after {
   content: "";
   flex: 1;
-  height: 7px;
+  height: 4px;
   background: #2C2C2C;
   margin-right: 0;
   margin-bottom: 2%;
+}
+
+.event-line {
+  width: 100%;
+  height: 4px;
+  background: #2C2C2C;
+  margin: 40px 0px 10px 0px;
 }
 
 
@@ -182,7 +190,7 @@ h1.welcome-text {
 
 .event-registration-wrapper {
   position: relative;
-  width: 90%;
+  width: 100%;
   margin: 3rem auto;
   display: flex;
   align-items: center;
@@ -195,7 +203,7 @@ h1.welcome-text {
 /* Sliding container */
 .event-registration {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -217,7 +225,8 @@ h1.welcome-text {
   flex-shrink: 0;
   transition: transform 0.4s ease;
   object-fit: contain;
-
+  margin: 0px 10px;
+  cursor: pointer;
 }
 
 .event-card:hover {
@@ -232,8 +241,10 @@ h1.welcome-text {
   border-radius: 50%;
   border: none;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.15);
-  color: #1e3a8a;
+  background-color: #72727294;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  color: white;
   font-size: 28px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -246,11 +257,11 @@ h1.welcome-text {
 }
 
 .left {
-  left: -30px;
+  left: 10px;
 }
 
 .right {
-  right: -30px;
+  right: 10px;
 }
 
 .regButtons {
@@ -368,41 +379,21 @@ h1.welcome-text {
 
 .slideshow-box {
   width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* Add this */
   overflow: hidden;
-  display: flex;
-  /* puts images side by side */
-  align-items: center;
-  justify-content: center;
+  /* Add this */
 }
 
-.slide-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
+.conveyor-card {
+  position: absolute;
+  width: clamp(180px, 30vw, 370px); /* Your default desktop width */
+  border-radius: 10px;
+  overflow: hidden;
 }
-
-.slide-img {
-  height: auto;
-  object-fit: contain;
-  transition: all 0.4s ease;
-}
-
-/* FIRST image in pair (smaller) */
-.slide-row img:first-child {
-  width: clamp(150px, 20vw, 320px);
-  transform: scale(1);
-  opacity: 0.9;
-}
-
-/* SECOND image in pair (larger) */
-.slide-row img:last-child {
-  width: clamp(200px, 30vw, 400px);
-  transform: scale(1);
-  opacity: 1;
-}
-
 
 /* adjust to match design */
 .glimpse-side {
@@ -514,8 +505,8 @@ h1.welcome-text {
   }
 
   .events-registration {
-  margin-top: 5vw;
-}
+    margin-top: 5vw;
+  }
 
   .event-registration-wrapper {
     margin: 1rem auto;
@@ -528,7 +519,7 @@ h1.welcome-text {
   }
 
   .events-registration::after {
-    height: 5px;
+    height: 4px;
   }
 
 
@@ -621,27 +612,28 @@ h1.welcome-text {
 
 
   .pics {
-    height: clamp(28rem, 90vw, 35rem);
+    height: clamp(29rem, 90vw, 35rem);
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-end;
-    gap: 20px;
+    gap: 5px;
     align-items: center;
   }
 
   .slideshow-box {
     width: 100%;
+    height: 100%;
+    min-height: 350px;
   }
 
-  .slide-row img:first-child {
-    width: clamp(158px, 43vw, 300px);
 
-  }
+.conveyor-card {
+  position: absolute;
+  width: clamp(180px, 40vw, 250px);
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-  .slide-row img:last-child {
-    width: clamp(150px, 20vw, 320px);
-
-  }
 
 
   .glimpse-side {
@@ -665,6 +657,15 @@ h1.welcome-text {
     background: #1e3a8a;
     margin-right: 0;
   }
+
+  .left {
+    left: 6px;
+  }
+
+  .right {
+    right: 6px;
+  }
+
 
 
 
@@ -703,28 +704,31 @@ h1.welcome-text {
 
   }
 
-  .slide-row img:first-child {
-    width: clamp(150px, 20vw, 320px);
-
-  }
-
-  .slide-row img:last-child {
-    width: clamp(150px, 20vw, 320px);
-
-  }
-
   h1.welcome-text {
     font-size: 3rem;
   }
 
   .pics {
-    height: 23rem;
+    height: 27rem;
   }
 
+  .slideshow-box {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+  }
 
-    .events-registration {
-  margin-top: 10vw;
+  .conveyor-card {
+  position: absolute;
+  width: clamp(165px, 40vw, 250px);
+  border-radius: 10px;
+  overflow: hidden;
 }
+
+
+  .events-registration {
+    margin-top: 10vw;
+  }
 
 
   .events-registration h2 {
@@ -733,6 +737,11 @@ h1.welcome-text {
 
   .events-registration::after {
     height: 3px;
+  }
+
+  .event-line {
+    height: 3px;
+
   }
 
 
@@ -748,6 +757,32 @@ h1.welcome-text {
 
 
   }
+
+  .linee2 {
+    border-bottom: 3px solid #151617;
+
+  }
+
+  .linee {
+    height: 3px;
+  }
+
+  .events-heading::after {
+    height: 3px;
+  }
+
+  .event-line {
+    margin: 25px 0px 10px 0px;
+  }
+
+  .left {
+    left: 5px;
+  }
+
+  .right {
+    right: 5px;
+  }
+
 
 
 

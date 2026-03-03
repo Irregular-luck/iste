@@ -1,5 +1,6 @@
 .navbar {
-    background: #555;
+    background-color: #1d1d1dc4;
+    backdrop-filter: blur(6px);
     padding: 15px 20px;
     display: flex;
     align-items: center;
@@ -82,17 +83,19 @@ li:active {
     align-items: center;
 }
 
-@media (max-width: 900px){
+@media (max-width: 900px) {
     .navbar ul {
         padding: 0px 0px;
     }
+
     li .link {
         padding: 5px 15px;
     }
+
     .navbar ul li {
         margin: 0 5px;
     }
-    
+
 }
 
 @media (max-width: 700px) {
@@ -100,6 +103,7 @@ li:active {
         padding: 15px 15px;
 
     }
+
     .hamburger {
         display: block;
     }
@@ -117,7 +121,7 @@ li:active {
         align-items: center;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        transform-origin: top; 
+        transform-origin: top;
         transform: translateX(-50%) scaleY(0);
         transition: transform 0.3s ease-in-out;
     }
@@ -125,16 +129,18 @@ li:active {
     ul.showMenu {
         transform: translateX(-50%) scaleY(1);
     }
+
     .navbar ul li {
         width: 95%;
         margin: 5px 0;
     }
+
     .navbar li .link {
-        display: block;  
+        display: block;
     }
 }
 
-@media(max-width:400px){
+@media(max-width:400px) {
     .navbar {
         padding: 10px 15px;
 
