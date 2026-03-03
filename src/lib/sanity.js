@@ -5,7 +5,7 @@ export const client = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID, 
   dataset: 'production',
   useCdn: true, 
-  apiVersion: '2026-02-23', 
+  apiVersion: '2023-01-01', 
 })
 
 // Helper to turn Sanity image references into URLs
