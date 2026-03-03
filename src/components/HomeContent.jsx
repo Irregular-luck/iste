@@ -9,6 +9,21 @@ const HomeContent = () => {
   const [index, setIndex] = useState(0);
   const [events, setEvents] = useState([]);
   const [sliderImages, setSliderImages] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  useEffect(() => {
+  async function fetchHome() {
+    try {
+      const data = await client.fetch(`*[_type == "home"][0]`);
+
+      setUpcomingEvents(data?.events2 || []);
+
+    } catch (err) {
+      console.error("Sanity Fetch Error:", err);
+    }
+  }
+
+  fetchHome();
+}, []);
 
   // Shuffle helper
   const shuffleArray = (array) => {
@@ -149,12 +164,16 @@ const HomeContent = () => {
         </button>
 
         <div className="event-registration" ref={sliderRef}>
-          <div className="event-card"></div>
-          <div className="event-card"></div>
-          <div className="event-card"></div>
-          <div className="event-card"></div>
-          <div className="event-card"></div>
-        </div>
+  {upcomingEvents.map((img, index) => (
+    <div className="event-card" key={index}>
+      <img
+        src={urlFor(img).width(500).url()}
+        alt="upcoming-event"
+        className="event-img"
+      />
+    </div>
+  ))}
+</div>
 
         <button className="nav-btn right" onClick={() => scroll("right")}>
           ❯
