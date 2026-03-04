@@ -17,9 +17,13 @@
 
 /* backround texture */
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: url('/background.svg') no-repeat center center fixed;
-  background-size: cover;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/background.svg');
+  background-repeat: repeat;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
 }
