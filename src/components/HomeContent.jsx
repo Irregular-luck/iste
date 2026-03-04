@@ -58,7 +58,7 @@ const HomeContent = () => {
 
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % shuffledImages.length);
-    }, 3000);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, [shuffledImages]);

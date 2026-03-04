@@ -228,11 +228,6 @@ h1.welcome-text {
   margin: 0px 10px;
   cursor: pointer;
 }
-
-.event-card:hover {
-  transform: translateY(-8px);
-}
-
 /* Premium transparent buttons */
 .nav-btn {
   position: absolute;
