@@ -13,15 +13,18 @@ const HomeContent = () => {
 
   // Fetch Home data from Sanity (Upcoming Events)
   useEffect(() => {
-    async function fetchHome() {
+    async function fetchUpcomingEvents() {
       try {
-        const data = await client.fetch(`*[_type == "home"][0]`);
-        setUpcomingEvents(data?.events2 || []);
+        const data = await client.fetch(`
+        *[_type == "upcomingEvent"] | order(_createdAt desc)
+      `);
+        setUpcomingEvents(data || []);
       } catch (err) {
         console.error("Sanity Fetch Error:", err);
       }
     }
-    fetchHome();
+
+    fetchUpcomingEvents();
   }, []);
 
   // Shuffle helper
@@ -67,9 +70,9 @@ const HomeContent = () => {
   const visibleItems =
     shuffledImages.length > 0
       ? [
-          { ...shuffledImages[index], position: "left" },
-          { ...shuffledImages[(index + 1) % shuffledImages.length], position: "right" },
-        ]
+        { ...shuffledImages[index], position: "left" },
+        { ...shuffledImages[(index + 1) % shuffledImages.length], position: "right" },
+      ]
       : [];
 
   const sliderRef = useRef(null);
@@ -105,6 +108,46 @@ const HomeContent = () => {
       zIndex: 0,
     },
   };
+
+  function EventCard({ event }) {
+    const [expanded, setExpanded] = useState(false);
+
+    return (
+      <div className="event-card">
+
+        <img
+          src={urlFor(event.mainImage).width(500).url()}
+          alt={event.title}
+          className="event-img"
+        />
+
+        <h3 className="event-title">{event.title}</h3>
+
+        <div className={`event-description ${expanded ? "expanded" : ""}`}>
+          {event.description}
+        </div>
+
+        <button
+          className="read-more"
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? "Read Less" : "Read More"}
+        </button>
+
+        {event.registrationUrl && (
+          <a
+            href={event.registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="event-register-btn"
+          >
+            Register
+          </a>
+        )}
+
+      </div>
+    );
+  }
 
   return (
     <div className="home">
@@ -173,15 +216,11 @@ const HomeContent = () => {
         </button>
 
         <div className="event-registration" ref={sliderRef}>
-          {upcomingEvents.map((img, index) => (
-            <div className="event-card" key={index}>
-              <img
-                src={urlFor(img).width(500).url()}
-                alt="upcoming-event"
-                className="event-img"
-              />
-            </div>
+
+          {upcomingEvents.map((event, index) => (
+            <EventCard key={index} event={event} />
           ))}
+
         </div>
 
         <button className="nav-btn right" onClick={() => scroll("right")}>
