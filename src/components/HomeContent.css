@@ -217,7 +217,6 @@ h1.welcome-text {
   margin-left: 25px;
   min-height: 500px;
   background-color: #1d1d1db5;
-  box-shadow: 0 0px 4px rgb(70, 70, 70);
   backdrop-filter: blur(6px);
   border-radius: 14px;
   display: flex;
@@ -651,8 +650,35 @@ h1.welcome-text {
 
   .event-card {
     min-width: 300px;
-    height: 430px;
+    min-height: 470px;
   }
+  .event-img {
+    height: 210px;
+  }
+
+  .event-registration .event-card:first-child {
+  margin-left: 30px;
+}
+
+.event-registration .event-card:last-child {
+  margin-right: 3%;
+}
+
+.nav-btn {
+  height: 50px;
+  width: 50px;
+}
+
+.left {
+  left: 4px!important;
+}
+
+.right {
+  right: 4px!important;
+}
+
+
+
 
 
   .pill-btn {
